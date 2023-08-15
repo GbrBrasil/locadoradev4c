@@ -4,7 +4,12 @@
 </div>
 <div>
     <?php
-        $txtPesquisa = (isset($_POST["txtPesquisa"]))?$_POST["txtPesquisa"]:"";
+        //$txtPesquisa = (isset($_POST["txtPesquisa"]))?$_POST["txtPesquisa"]:"";
+        if (isset($_POST["txtPesquisa"])) {
+            $txtPesquisa = $_POST["txtPesquisa"];
+        }else {
+            $txtPesquisa = "";
+        }
     ?> 
     
     <form action="" method="post">
@@ -27,17 +32,18 @@
     </thead>
     <tbody>
     <?php
-        $sql = "SELECT f.idfilme,tituloFilme, duracaoFilme, valorLocacao, nomeCategoria,
+        $sql = "SELECT f.idFilme,tituloFilme, duracaoFilme, valorLocacao, nomeCategoria,
         CASE
             WHEN statusFilme = 0 THEN 'Disponivel'
-            WHEN statusFilme = 0 THEN 'Locado'
-            WHEN statusFilme = 0 THEN 'Indisponivel'
+            WHEN statusFilme = 1 THEN 'Locado'
+            WHEN statusFilme = 2 THEN 'Indisponivel'
         END
         as statusLocacao
         FROM
         tbfilmes as f left join
-        tbcategorias as c on f.idCatewgoria = c.idCategoria
-        where by tituloFilme";
+        tbcategorias as c on f.idCategoria = c.idCategoria
+        where tituloFilme like '%{$txtPesquisa}%' 
+        order by tituloFilme";
 
         $rs = mysqli_query($conexao, $sql);
         while ($dados = mysqli_fetch_assoc($rs)) {
