@@ -17,6 +17,7 @@
             <li><a href="index.php?menu=home">Home</a></li>
             <li><a href="index.php?menu=videos">Videos</a></li>
             <li><a href="index.php?menu=categoria">Categoria</a></li>
+            <li><a href="index.php?menu=clientes">Clientes</a></li>
         </ul>
     </header>
     <main>
