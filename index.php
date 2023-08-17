@@ -16,7 +16,7 @@
         <ul>
             <li><a href="index.php?menu=home">Home</a></li>
             <li><a href="index.php?menu=videos">Videos</a></li>
-            <li><a href="index.php?menu=categoria">Categoria</a></li>
+            <li><a href="index.php?menu=categorias">Categoria</a></li>
             <li><a href="index.php?menu=clientes">Clientes</a></li>
         </ul>
     </header>
@@ -95,8 +95,6 @@
             case 'locacao':
                 include("locacao.php");
                 break;
-            case 'home':
-                include("home.php");
             default:
                 include("home.php");
         }

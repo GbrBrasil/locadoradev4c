@@ -18,7 +18,7 @@
         <select name="idCategoria" id="idCategoria" required>
             <option value="">Selecionea categoria</option>
             <?php
-            $sql = "SELECT * FROM tbCategoria order by nomeCategoria ASC";
+            $sql = "SELECT * FROM tbcategorias order by nomeCategoria ASC";
             $rs = mysqli_query($conexao, $sql);
             while ($dados = mysqli_fetch_assoc($rs)){
             

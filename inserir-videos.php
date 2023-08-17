@@ -6,7 +6,7 @@ $duracaoFilme = $_POST["duracaoFilme"];
 $valorLocacao = $_POST["valorLocacao"];
 $idCategoria = $_POST["idCategoria"];
 
-$sql = "INSERT INTO tbFilmes (
+$sql = "INSERT INTO tbfilmes (
     tituloFilme,
     duracaoFilme,
     valorLocacao,
@@ -16,7 +16,7 @@ $sql = "INSERT INTO tbFilmes (
     '$tituloFilme',
     '$duracaoFilme',
     '$valorLocacao',
-    'idCategoria'
+    '$idCategoria'
     )
     ";
     $rs = mysqli_query($conexao, $sql);
