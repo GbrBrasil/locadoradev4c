@@ -21,12 +21,13 @@
 <table border="1">
     <thead>
         <tr>
-            <th>idateTitulo</th>
+            <th>id</th>
+            <th>Titulo</th>
             <th>Duração do Filme</th>
             <th>Valor da Locação</th>
             <th>Categoria</th>
             <th>Status</th>
-            <th><i class="ph-dutone ph-pencil-simple"></i></th>
+            <th>Editar</i></th>
             <th>Excluir</th>
         </tr>
     </thead>
@@ -56,8 +57,13 @@
                 <td><?= $dados["nomeCategoria"] ?></td>
                 <td><?= $dados["statusLocacao"] ?></td>
                 <td>
-                    <a href="index.php?menu=editar-videos&idFilme=<?$dados["idFilme"]?>">
+                    <a href="index.php?menu=editar-videos&idFilme=<?=$dados["idFilme"]?>">
                         Editar
+                    </a>
+                </td>
+                <td>
+                    <a href="index.php?menu=excluir-videos&idFilme=<?=$dados["idFilme"]?>">
+                        Excluir
                     </a>
                 </td>
             </tr>
