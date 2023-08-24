@@ -21,14 +21,19 @@
         <tr>
             <th>id</th>
             <th>Nome do(a) Cliente</th>
-            <th>Editar</th>
-            <th>Excluir</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
             <th>Status</th>
         </tr>
     </thead>
     <tbody>
     <?php
-        $sql = "SELECT * , FROM tbclientes
+        $sql = "SELECT * ,  CASE
+            WHEN statusCliente = 0 THEN 'Disponivel'
+            WHEN statusCliente = 1 THEN 'Indisponivel'
+        END
+        as statusCliente FROM tbclientes
+       
         where nomeCliente like '%{$txtPesquisa}%'";
         $rs = mysqli_query($conexao, $sql);
      
@@ -37,16 +42,8 @@
             <tr>
                 <td><?= $dados["idCliente"] ?></td>
                 <td><?= $dados["nomeCliente"] ?></td>
-                <td>
-                    <a href="index.php?menu=editar-clientes&idCliente=<?=$dados{"idCliente"}?>">
-                    Editar
-                    </a>
-                </td>
-                <td>
-                    <a href="index.php?menu=excluir-clientes&idClientes&idCliente=<?=$dados["idCliente"]?>">
-                        Excluir
-                    </a>
-                </td>
+                <td><?= $dados["telefoneCliente"] ?></td>
+                <td><?= $dados["emailCliente"] ?></td>
                 <td><?= $dados["statusCliente"] ?></td>
             </tr>
         <?php

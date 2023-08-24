@@ -1,18 +1,24 @@
 <h2>Inserir cliente</h2>
 <?php
 $nomeCliente = $_POST["nomeCliente"];
+$telefoneCliente = $_POST["telefoneCliente"];
+$emailCliente = $_POST["emailCliente"];
 
 $sql = "INSERT INTO tbclientes (
-    nomeCliente
+    nomeCliente,
+    telefoneCliente,
+    emailCliente
     )
     VALUES(
-    '$nomeCliente'
+    '$nomeCliente',
+    '$telefoneCliente',
+    '$emailCliente'
     )
     ";
     $rs = mysqli_query($conexao,$sql);
 
     if ($rs) {
-        echo "<p>Registro inserido cxom sucesso</p>";
+        echo "<p>Registro inserido com sucesso</p>";
     } else {
         echo "<p>Erro ao inserir</p>";
     }

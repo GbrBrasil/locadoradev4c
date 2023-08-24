@@ -3,7 +3,15 @@
 <form action="index.php?menu=inserir-clientes" method="post">
     <div>
         <label for="nomeCliente">Nome do cliente</label>
-        <input type="text" name="nomeCliente" id="Nome da cliente">
+        <input type="text" name="nomeCliente" id="nomecliente" required>
+    </div>
+    <div>
+        <label for="nomeCliente">Telefone do cliente</label>
+        <input type="text" name="teltefoneCliente" id="telefoneCliente" required>
+    </div>
+    <div>
+        <label for="nomeCliente">E-mail do cliente</label>
+        <input type="text" name="emailCliente" id="emailCliente" required>
     </div>
 
     <div>
