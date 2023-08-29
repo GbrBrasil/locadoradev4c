@@ -1,3 +1,4 @@
+
 <h2>Lista de Clientes</h2>
 
 <div>
@@ -24,6 +25,8 @@
             <th>Telefone</th>
             <th>E-mail</th>
             <th>Status</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +48,16 @@
                 <td><?= $dados["telefoneCliente"] ?></td>
                 <td><?= $dados["emailCliente"] ?></td>
                 <td><?= $dados["statusCliente"] ?></td>
+                <td>
+                    <a href="index.php?menu=editar-clientes&idCliente=<?=$dados{"idCliente"}?>">
+                    Editar
+                    </a>
+                </td>
+                <td>
+                    <a href="index.php?menu=excluir-clientes&idCliente&idCliente=<?=$dados["idCliente"]?>">
+                        Excluir
+                    </a>
+
             </tr>
         <?php
         }
