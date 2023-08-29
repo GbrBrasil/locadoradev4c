@@ -1,6 +1,6 @@
 <?php
-$idFilme = $_GET["idfilme"];
-$sql = "SELECT * FROM tbfilmes WHERE idfilme = '{$idFilme}'";
+$idFilme = $_GET["idFilme"];
+$sql = "SELECT * FROM tbfilmes WHERE idFilme = '{$idFilme}'";
 $rs = mysqli_query($conexao,$sql)
 or die("Erro ao realizar a consulta. Erro: " . mysqli_error($conexao));
 $dados = mysqli_fetch_assoc($rs);
@@ -9,19 +9,19 @@ $dados = mysqli_fetch_assoc($rs);
 <form action="index.php?menu=atualizar-videos" method="post">
     <div>
         <label for="idFilme">ID</label>
-        <input type="text" name="idFilme" id="idFilme" value="<?=$dados['idFilme']?>" required>
+        <input type="text" name="idFilme" id="idFilme" value="<?=$dados['idFilme']?>" readonly>
     </div>
     <div>
-        <label for="tituloFilme">Título do FIlme</label>
+        <label for="tituloFilme">Título do Filme</label>
         <input type="text" name="tituloFilme" id="tituloFilme" value="<?=$dados['tituloFilme']?>">
     </div>
     <div>
         <label for="duracaoFilme">Duração do Video</label>
-        <input type="text" name="duracaoFilme" id="duracaoFilme" value="<?=$dados['tituloFilme']?>">
+        <input type="text" name="duracaoFilme" id="duracaoFilme" value="<?=$dados['duracaoFilme']?>">
     </div>
     <div>
         <label for="valorLocacao">Valor da Locação</label>
-        <input type="text" name="valorLocacao" id="valorLocacao" value="<?=$dados['tituloFilme']?>">
+        <input type="text" name="valorLocacao" id="valorLocacao" value="<?=$dados['valorLocacao']?>">
     </div>
     <div>
         <label for="idCategoria">Categoria</label>
@@ -32,8 +32,8 @@ $dados = mysqli_fetch_assoc($rs);
             $rs = mysqli_query($conexao, $sql);
             while ($dados2 = mysqli_fetch_assoc($rs)){
             ?>
-                <option value="" <?php echo ($dados["idCategoria"] == $dados2["idCategoria"])?"selected":""?>
-                value="<?= $dados2["idCategoria"] ?>">
+                <option value="<?= $dados["idCategoria"] ?>" <?php echo ($dados["idCategoria"] == $dados2["idCategoria"])?"selected":""?>>
+               
                 <?= $dados2["nomeCategoria"]?>
                 </option>
             <?php

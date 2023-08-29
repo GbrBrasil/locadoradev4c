@@ -27,7 +27,7 @@
             <th>Valor da Locação</th>
             <th>Categoria</th>
             <th>Status</th>
-            <th>Editar</i></th>
+            <th>Editar</th>
             <th>Excluir</th>
         </tr>
     </thead>

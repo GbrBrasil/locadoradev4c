@@ -7,7 +7,7 @@
     </div>
     <div>
         <label for="nomeCliente">Telefone do cliente</label>
-        <input type="text" name="teltefoneCliente" id="telefoneCliente" required>
+        <input type="text" name="telefoneCliente" id="telefoneCliente" required>
     </div>
     <div>
         <label for="nomeCliente">E-mail do cliente</label>

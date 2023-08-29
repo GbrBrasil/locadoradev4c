@@ -32,8 +32,8 @@
     <tbody>
     <?php
         $sql = "SELECT * ,  CASE
-            WHEN statusCliente = 0 THEN 'Disponivel'
-            WHEN statusCliente = 1 THEN 'Indisponivel'
+            WHEN statusCliente = 0 THEN 'Ativo'
+            WHEN statusCliente = 1 THEN 'Inativo'
         END
         as statusCliente FROM tbclientes
        

@@ -10,9 +10,10 @@ $sql = "UPDATE tbfilmes SET
 tituloFilme='{$tituloFilme}',
 duracaoFilme='{$duracaoFilme}',
 valorLocacao='{$valorLocacao}',
-idCategoria='{$idCategoria}',
-idFilme='{$idFilme}'
+idCategoria='{$idCategoria}'
+WHERE idFilme='{$idFilme}'
 ";
+echo $sql;
 $rs = mysqli_query($conexao,$sql);
 echo "<p>Registro inserido com sucesso!</p>";
 ?>
