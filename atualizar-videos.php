@@ -13,7 +13,6 @@ valorLocacao='{$valorLocacao}',
 idCategoria='{$idCategoria}'
 WHERE idFilme='{$idFilme}'
 ";
-echo $sql;
 $rs = mysqli_query($conexao,$sql);
 echo "<p>Registro inserido com sucesso!</p>";
 ?>

@@ -32,7 +32,7 @@ $dados = mysqli_fetch_assoc($rs);
             $rs = mysqli_query($conexao, $sql);
             while ($dados2 = mysqli_fetch_assoc($rs)){
             ?>
-                <option value="<?= $dados["idCategoria"] ?>" <?php echo ($dados["idCategoria"] == $dados2["idCategoria"])?"selected":""?>>
+                <option value="<?= $dados2["idCategoria"] ?>" <?php echo ($dados["idCategoria"] == $dados2["idCategoria"])?"selected":""?>>
                
                 <?= $dados2["nomeCategoria"]?>
                 </option>
