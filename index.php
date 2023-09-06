@@ -18,6 +18,7 @@
             <li><a href="index.php?menu=videos">Videos</a></li>
             <li><a href="index.php?menu=categorias">Categoria</a></li>
             <li><a href="index.php?menu=clientes">Clientes</a></li>
+            <li><a href="index.php?menu=locacao">Locacao</a></li>
         </ul>
     </header>
     <main>
