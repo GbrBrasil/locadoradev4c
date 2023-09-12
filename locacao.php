@@ -127,8 +127,8 @@ if ($idCliente > 0) {
                         date_format(dataLocacao, '%d/%m/%Y') as dataLocacao,
                         statusLocacao,
                         cli.idCliente
-                            FROM tbLocacao as loc
-                    inner join tbClientes as cli on loc.idCliente = cli.idCliente
+                            FROM tblocacao as loc
+                    inner join tbclientes as cli on loc.idCliente = cli.idCliente
                     WHERE cli.idCliente = {$idCliente} order by statusLocacao asc,dataLocacao desc, idLocacao desc";
                         $rs = mysqli_query($conexao, $sql);
                         while ($dados = mysqli_fetch_assoc($rs)){
@@ -155,7 +155,7 @@ if ($idCliente > 0) {
                 <div>
                     <div>
                         <!-- area locacao atual -->
-                        <h3>Locacao Atual</h3>
+                        <h3>Locação Atual</h3>
                         <form action="" method="get">
                             <input type="hidden" name="menu" value="locacao">
                             <input type="hidden" name="idLocacao" value="<?= $idLocacao ?>">
@@ -210,7 +210,7 @@ if ($idCliente > 0) {
                             as statusItemLocado
                                 FROM tblocacao as loc
                                     inner join tbitenslocados as iloc
-                                    inner join tbfilmes as f on loc.idLocacao = iloc.idLocacao
+                                    inner join tbfilmes as f on loc.idLocacao = loc.idLocacao
                                     and iloc.idFilme = f.idFilme
                                     WHERE loc.idLocacao = {$idLocacao}";
                                 
