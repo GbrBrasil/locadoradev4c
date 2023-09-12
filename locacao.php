@@ -7,7 +7,7 @@ $idCliente = (isset($_GET['idCliente'])) ? $_GET["idCliente"] : 0;
 $idLocacao = (isset($_GET['idLocacao'])) ? $_GET["idLocacao"] : 0;
 
 //Seleciona o id do filme locado
-$idFilme = (isset($_GET['idFilme'])) ? $_GET["idCliente"] : 0;
+$idFilme = (isset($_GET['idFilme'])) ? $_GET["idFilme"] : 0;
 
 //Seleciona a opção de locação
 $menuOpLocacao = (isset($_GET['menuOpLocacao'])) ? $_GET["menuOpLocacao"] : "";
@@ -26,10 +26,11 @@ if (isset($_GET["dataDeEntrega"])) {
 
 if ($menuOpLocacao === "addLocacao") {
     $sql = "INSERT INTO tblocacao (idCliente,dataLocacao,statusLocacao)
-        VALUES ('{$idCliente}','{$dataAtual}',0";
-    mysqli_query($conexao, $sql) or die("Erro: " . mysqli_error($conexao));
+        VALUES ('{$idCliente}','{$dataAtual}',0)";
+    
+    mysqli_query($conexao, $sql) or die("Erro 2: " . mysqli_error($conexao));
 
-    $idLocacao = $mysqli_insert_id($conexao);
+    $idLocacao = mysqli_insert_id($conexao);
     header('Location:index.php?menu=locacao&idCliente=' . $idCliente);
 }
 
@@ -39,9 +40,10 @@ if ($menuOpLocacao === "addVideo") {
     // Insere o video na locação
     $sql = "INSERT INTO tbitenslocados(idLocacao, idFilme, dataDeEntrega)
     VALUES ('{$idLocacao}','{$idFilme}','{$dataDeEntrega}')";
-    mysqli_query($conexao,$sql);
+        echo $sql;
+    mysqli_query($conexao,$sql) or die("Erro 3: " . mysqli_error($conexao));
     //Atualiza o status na tabela tbFilme para 1 ->locado 
-    $sql = "UPDATE tbFilmes SET statusFilme = 1 WHERE idFilme = '{idFilme}'";
+    $sql = "UPDATE tbfilmes SET statusFilme = 1 WHERE idFilme = '{$idFilme}'";
     mysqli_query($conexao,$sql);
 }
 
@@ -49,7 +51,7 @@ if ($menuOpLocacao === "addVideo") {
 if ($menuOpLocacao === "baixaVideo") {
     //Atualiza o status do video na lista da locacao
     $sql = "UPDATE tbitenslocados SET statusItemLocado = 1
-    WHERE idLocacao = '{$idLocacao}' and idFilme = '{$idLocacao}'";
+    WHERE idLocacao = '{$idLocacao}' and idFilme = '{$idFilme}'";
     mysqli_query($conexao,$sql);
     //Atualiza o status na tabela tbFilmes para 0 -> Disponível
     $sql = "UPDATE tbFilmes SET statusFilme = 0 WHERE idFilme = '{$idFilme}'";
@@ -125,6 +127,10 @@ if ($idCliente > 0) {
                         $sql = "SELECT
                         idLocacao,
                         date_format(dataLocacao, '%d/%m/%Y') as dataLocacao,
+                        CASE
+                        WHEN statusLocacao = 0 THEN 'Em locação'
+                        WHEN statusLocacao = 1 THEN 'Finalizado'
+                        END AS
                         statusLocacao,
                         cli.idCliente
                             FROM tblocacao as loc
@@ -210,7 +216,7 @@ if ($idCliente > 0) {
                             as statusItemLocado
                                 FROM tblocacao as loc
                                     inner join tbitenslocados as iloc
-                                    inner join tbfilmes as f on loc.idLocacao = loc.idLocacao
+                                    inner join tbfilmes as f on loc.idLocacao = iloc.idLocacao
                                     and iloc.idFilme = f.idFilme
                                     WHERE loc.idLocacao = {$idLocacao}";
                                 
