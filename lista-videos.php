@@ -4,21 +4,21 @@
 </div>
 <div>
     <?php
-        //$txtPesquisa = (isset($_POST["txtPesquisa"]))?$_POST["txtPesquisa"]:"";
-        if (isset($_POST["txtPesquisa"])) {
-            $txtPesquisa = $_POST["txtPesquisa"];
-        }else {
-            $txtPesquisa = "";
-        }
-    ?> 
-    
+    //$txtPesquisa = (isset($_POST["txtPesquisa"]))?$_POST["txtPesquisa"]:"";
+    if (isset($_POST["txtPesquisa"])) {
+        $txtPesquisa = $_POST["txtPesquisa"];
+    } else {
+        $txtPesquisa = "";
+    }
+    ?>
+
     <form action="" method="post">
         <label for="txtPesquisa">Pesquisar</label>
-        <input type="search" name="txtPesquisa" id="txtPesquisa" value="<?=$txtPesquisa?>">
+        <input type="search" name="txtPesquisa" id="txtPesquisa" value="<?= $txtPesquisa ?>">
         <button type="submit">OK</button>
     </form>
 </div>
-<table border="1">
+<table class="table table-dark table-striped">
     <thead>
         <tr>
             <th>id</th>
@@ -32,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-    <?php
+        <?php
         $sql = "SELECT f.idFilme,tituloFilme, duracaoFilme, valorLocacao, nomeCategoria,
         CASE
             WHEN statusFilme = 0 THEN 'Disponivel'
@@ -57,19 +57,18 @@
                 <td><?= $dados["nomeCategoria"] ?></td>
                 <td><?= $dados["statusLocacao"] ?></td>
                 <td>
-                    <a href="index.php?menu=editar-videos&idFilme=<?=$dados["idFilme"]?>">
-                        Editar
+                    <a class="btn btn-warning" href="index.php?menu=editar-videos&idFilme=<?= $dados["idFilme"] ?>">
+                        <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="index.php?menu=excluir-videos&idFilme=<?=$dados["idFilme"]?>">
-                        Excluir
+                    <a class="btn btn-danger" href="index.php?menu=excluir-videos&idFilme=<?= $dados["idFilme"] ?>">
+                        <i class="bi bi-trash"></i>
                     </a>
                 </td>
             </tr>
         <?php
-            }
-            ?>
+        }
+        ?>
     </tbody>
 </table>
-
