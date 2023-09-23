@@ -1,23 +1,26 @@
 
 <h2>Lista de Clientes</h2>
 
-<div>
-    <a href="index.php?menu=cad-clientes">Cadastrar novo cliente</a>
+<div class="mb-4">
+    <a class="btn btn-primary mb-2" href="index.php?menu=cad-clientes">Cadastrar novo cliente</a>
 </div>
 <div>
     <?php
     $txtPesquisa = (isset($_POST["txtPesquisa"]))?$_POST["txtPesquisa"]:"";
     ?>
 
-    <form action="" method="post">
-        <label for="txtPesquisa">Pesquisa</label>
-        <input type="search" name="txtPesquisa" id="txtPesquisa" value="<?=$txtPesquisa?>">
-        <button type="submit">
+    <form class="mb-4"  action="" method="post">
+        <div class="input-group">  
+            <div class="input-group-text">Pesquisar</div>
+        <input class="form-control" type="search" name="txtPesquisa" id="txtPesquisa" value="<?=$txtPesquisa?>">
+        <button class="btn btn-success" type="submit">
             OK
         </button>
+        </div>  
     </form>
 </div>
-<table border="1">
+<div class="p-3 bg-dark rounded-4">
+<table class="table table-dark table-striped">
     <thead>
         <tr>
             <th>id</th>
@@ -50,12 +53,12 @@
                 <td><?= $dados["statusCliente"] ?></td>
                 <td>
                     <a href="index.php?menu=editar-clientes&idCliente=<?=$dados{"idCliente"}?>">
-                    Editar
+                    <i class="btn btn-warning bi bi-pencil-square"></i>
                     </a>
                 </td>
                 <td>
                     <a href="index.php?menu=excluir-clientes&idCliente&idCliente=<?=$dados["idCliente"]?>">
-                        Excluir
+                    <i class="btn btn-danger bi bi-x-lg"></i>
                     </a>
 
             </tr>
@@ -65,3 +68,4 @@
     </tbody>
     
 </table>
+    </div>

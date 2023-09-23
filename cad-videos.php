@@ -33,7 +33,7 @@
 
     </div>
     <div class="mb-3 col-4 col-sn-6 col-md-8" >
-        <button type="submit"><i class="bi bi-floppy"></i> Salvar</button>
+        <button class="btn btn-success"  type="submit"><i class="bi bi-floppy"></i> Salvar</button>
     </div>
 
 </form>

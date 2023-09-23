@@ -40,7 +40,7 @@ if ($menuOpLocacao === "addVideo") {
     // Insere o video na locação
     $sql = "INSERT INTO tbitenslocados(idLocacao, idFilme, dataDeEntrega)
     VALUES ('{$idLocacao}','{$idFilme}','{$dataDeEntrega}')";
-        echo $sql;
+
     mysqli_query($conexao,$sql) or die("Erro 3: " . mysqli_error($conexao));
     //Atualiza o status na tabela tbFilme para 1 ->locado 
     $sql = "UPDATE tbfilmes SET statusFilme = 1 WHERE idFilme = '{$idFilme}'";
@@ -78,11 +78,11 @@ if ($linha > 0) {
 
 ?>
 <h1>Locação</h1>
-<div>
+<div class="mb-3 col-4 col-sn-6 col-md-4">
     <form action="" method="get">  
         <input type="hidden" name="menu" value="locacao">
-        <label for="idCliente" id="idCliente">ID do Cliente</label>
-        <select name="idCliente" id="idCliente">
+        <label class="form-label" for="idCliente" id="idCliente">ID do Cliente</label>
+        <select class="form-control" name="idCliente" id="idCliente">
             <?php
             $sql = "SELECT * FROM tbclientes WHERE statusCliente = 0";
             $rs = mysqli_query($conexao,$sql);
@@ -97,7 +97,7 @@ if ($linha > 0) {
             }
             ?>
         </select>
-        <button type="submit">Listar locações para este cliente</button>
+        <button class="btn btn-info" type="submit">Listar locações para este cliente</button>
     </form>
 </div>
 
@@ -105,14 +105,14 @@ if ($linha > 0) {
 if ($idCliente > 0) {
     ?>
         <div class="box-locacao">
-            <div>
+            <div >
                 <h3>Lista de locações</h3>
-                <div>
-                    <a href="index.php?menu=locacao&idCliente=<?= $idCliente ?>&menuOpLocacao=addLocacao">
+                <div class="mb-3 col-4 col-sn-6 col-md-8">
+                    <a class="btn btn-info" href="index.php?menu=locacao&idCliente=<?= $idCliente ?>&menuOpLocacao=addLocacao">
                     Nova locação</a>
                 </div>
 
-                <table border="1">
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>id Locação</th>
@@ -145,7 +145,7 @@ if ($idCliente > 0) {
                                     <td><?= $dados["statusLocacao"]?></td>
                                     <td>
                                         <a href="index.php?menu=locacao&idCliente=<?= $dados["idCliente"] ?>&idLocacao=<?= $dados["idLocacao"] ?>">
-                                            Editar
+                                        <i class="bi bi-pencil-square"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -158,18 +158,18 @@ if ($idCliente > 0) {
             <?php
             if ($idLocacao > 0) {
                 ?>
-                <div>
-                    <div>
+                <div class="mb-3 col-3 col-sn-3 col-md-3">
+                    <div >
                         <!-- area locacao atual -->
                         <h3>Locação Atual</h3>
                         <form action="" method="get">
-                            <input type="hidden" name="menu" value="locacao">
-                            <input type="hidden" name="idLocacao" value="<?= $idLocacao ?>">
-                            <input type="hidden" name="idCliente" value="<?= $idCliente ?>">
-                            <input type="hidden" name="menuOpLocacao" value="addVideo">
-                            <label for="">ID do Filme</label>
+                            <input class="form-control" type="hidden" name="menu" value="locacao">
+                            <input class="form-control" type="hidden" name="idLocacao" value="<?= $idLocacao ?>">
+                            <input class="form-control" type="hidden" name="idCliente" value="<?= $idCliente ?>">
+                            <input class="form-control" type="hidden" name="menuOpLocacao" value="addVideo">
+                            <label class="form-label" for="">ID do Filme</label>
                             <select name="idFilme" id="idFilme" required>
-                                <option value="">Selecione o video</option>
+                                <option  value="">Selecione o video</option>
                             <?php
                             $sql = "SELECT * FROM tbfilmes
                             WHERE statusFilme = 0";
@@ -183,15 +183,15 @@ if ($idCliente > 0) {
                             }
                             ?>
                         </select>
-                        <input type="date" name="dataDeEntrega" id="dataDeEntrega" value="<?= $dataDeEntrega ?>">
-                        <button type="submit">ADD</button>
+                        <input class="form-control" type="date" name="dataDeEntrega" id="dataDeEntrega" value="<?= $dataDeEntrega ?>">
+                        <button class="btn btn-info mb-3" type="submit">ADD</button>
                         </form>
                     </div>
-                    <a target="_blank" href="recibo-locacao.php?idCliente=<?=$idCliente?>&idLocacao=<?=$idLocacao?>&menuOpLocacao=imprimirLocacao">
+                    <a class="btn btn-info" target="_blank" href="recibo-locacao.php?idCliente=<?=$idCliente?>&idLocacao=<?=$idLocacao?>&menuOpLocacao=imprimirLocacao">
                             Imprimir Recibo de locação
                     </a>
                 </div>
-                <table border="1">
+                <table class="table table-dark table-striped">
 
                         <thead>
                             <tr>
@@ -232,12 +232,12 @@ if ($idCliente > 0) {
 
                                         <td>
                                             <a href="index.php?menu=locacao&idLocacao&idCliente=<?= $idCliente ?>&idLocacao=<?=$idLocacao?>&menuOpLocacao=baixaVideo&idFilme=<?=$dados["idFilme"]?>">
-                                                Baixar
+                                            <i class="bi bi-box-arrow-in-down"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="index.php?menu=locacao&idLocacao&idCliente=<?= $idCliente ?>&idLocacao=<?=$idLocacao?>&menuOpLocacao=removeVideo&idFilme=<?=$dados["idFilme"]?>">
-                                                Remover
+                                            <a  href="index.php?menu=locacao&idLocacao&idCliente=<?= $idCliente ?>&idLocacao=<?=$idLocacao?>&menuOpLocacao=removeVideo&idFilme=<?=$dados["idFilme"]?>">
+                                            <i class="bi bi-x-lg"></i>
                                             </a>
                                         </td>
                                     </tr>
