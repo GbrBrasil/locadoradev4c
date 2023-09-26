@@ -14,13 +14,13 @@
             <div class="input-group-text">Pesquisar</div>
         <input class="form-control" type="search" name="txtPesquisa" id="txtPesquisa" value="<?=$txtPesquisa?>">
         <button class="btn btn-success" type="submit">
-            OK
+            <i class="bi bi-search"></i>
         </button>
         </div>  
     </form>
 </div>
-<div class="p-3 bg-dark rounded-4">
-<table class="table table-dark table-striped">
+<div class="p-3 bg-dark rounded-3">
+<table class="table table-dark table-striped ">
     <thead>
         <tr>
             <th>id</th>
